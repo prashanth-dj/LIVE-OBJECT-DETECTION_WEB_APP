@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Object Detection Web App</title>
+    <style>
+        /* Gray background */
+        body {
+            background-color: #f2f2f2;
+        }
+
+        /* White container with padding */
+        .container {
+            background-color: grey;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive video stream container */
+        .video-container {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        background-color: #E5E5E5; /* gray background */
+    }
+
+    /* Responsive video stream */
+    #video_stream {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 50%;
+        max-height: 50%;
+        background-color: #FFF; /* white background */
+    }
+
+        /* Button style */
+        #startButton {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        /* Center align text */
+        .center {
+            text-align: center;
+        }
+
+        /* Responsive canvas */
+        canvas {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="center">Object Detection Web App</h1>
+        <div class="center">
+            <button id="startButton">Start Object Detection</button>
+        </div>
+        <div class="video-container">
+            <img id="video_stream" src="{{ url_for('video_feed') }}" alt="Video Stream">
+        </div>
+        <canvas id="canvas"></canvas>
+    </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
